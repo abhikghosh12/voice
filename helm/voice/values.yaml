@@ -1,0 +1,27 @@
+webapp:
+  image:
+    repository: abhikgho/text_to_speech_web_app
+    tag: webapp-v1.0.1
+  replicaCount: 1
+
+worker:
+  image:
+    repository: abhikgho/text_to_speech_web_app
+    tag: worker-v1.0.1
+  replicaCount: 1
+
+ingress:
+  enabled: true
+  host: text-to-speech.example.com
+
+service:
+  type: ClusterIP
+  port: 80
+
+redis:
+  master:
+    persistence:
+      enabled: false
+
+configMap:
+  REDIS_URL: "redis://{{ .Release.Name }}-redis-master:6379"

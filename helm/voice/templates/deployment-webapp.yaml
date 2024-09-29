@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-webapp
+  labels:
+    app: {{ .Release.Name }}-webapp
+spec:
+  replicas: {{ .Values.webapp.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-webapp
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-webapp
+    spec:
+      containers:
+      - name: webapp
+        image: "{{ .Values.webapp.image.repository }}:{{ .Values.webapp.image.tag }}"
+        ports:
+        - containerPort: 5000
+        env:
+        - name: REDIS_URL
+          value: {{ .Values.configMap.REDIS_URL }}

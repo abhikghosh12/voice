@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  web:
+    image: abhikgho/text_to_speech_web_app:web-v1.0.1
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - REDIS_URL=redis://redis:6379
+    volumes:
+      - ./uploads:/app/uploads
+      - ./output:/app/output
+    depends_on:
+      - redis
+    command: node server.js
+    restart: unless-stopped
+
+  worker:
+    image: abhikgho/text_to_speech_web_app:worker-v1.0.1
+    command: node worker.js
+    environment:
+      - NODE_ENV=production
+      - REDIS_URL=redis://redis:6379
+    volumes:
+      - ./uploads:/app/uploads
+      - ./output:/app/output
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  redis:
+    image: redis:6-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+volumes:
+  uploads:
+  output:
+  redis_data:
