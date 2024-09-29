@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web:
-    image: abhikgho/text_to_speech_web_app:web-v1.0.1
+    image: abhikgho/text_to_speech_web_app:web-v1.0.3
     ports:
       - "5000:5000"
     environment:
@@ -17,7 +17,7 @@ services:
     restart: unless-stopped
 
   worker:
-    image: abhikgho/text_to_speech_web_app:worker-v1.0.1
+    image: abhikgho/text_to_speech_web_app:worker-v1.0.3
     command: node worker.js
     environment:
       - NODE_ENV=production
