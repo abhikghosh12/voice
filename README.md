@@ -1,5 +1,5 @@
 # Voice App
-
+![alt text](image.png)
 Voice is a web application that converts PDF documents to speech using AI-powered text-to-speech models. This README provides instructions on how to set up and run the Voice app locally or deploy it using Helm.
 
 ## Features
@@ -10,11 +10,29 @@ Voice is a web application that converts PDF documents to speech using AI-powere
 
 ## AI Voice Models
 
+## Voice Models
+
 Voice uses the following AI voice models:
 
 1. Morgan Freeman-like voice (en-US-GuyNeural)
 2. David Attenborough-like voice (en-GB-RyanNeural)
 3. Amitabh Bachchan-like voice (en-IN-PrabhatNeural)
+4. British English Female (en-GB-SoniaNeural)
+5. Hindi Female (hi-IN-SwaraNeural)
+6. Hindi Male (hi-IN-MadhurNeural)
+7. German Female (de-DE-KatjaNeural)
+8. German Male (de-DE-ConradNeural)
+9. US English Female (en-US-JennyNeural)
+10. Indian English Female (en-IN-NeerjaNeural)
+
+### Indian Celebrity-like Voices
+
+11. Shah Rukh Khan-like voice (hi-IN-MadhurNeural)
+12. Priyanka Chopra-like voice (hi-IN-SwaraNeural)
+13. Amitabh Bachchan-like voice (en-IN-PrabhatNeural)
+14. Deepika Padukone-like voice (en-IN-NeerjaNeural)
+15. Aamir Khan-like voice (hi-IN-MadhurNeural)
+16. Aishwarya Rai-like voice (hi-IN-SwaraNeural)
 
 These models are provided by the Edge TTS (Text-to-Speech) service.
 
