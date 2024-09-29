@@ -1,18 +1,18 @@
 webapp:
   image:
     repository: abhikgho/text_to_speech_web_app
-    tag: webapp-v1.0.1
+    tag: webapp-v1.0.3
   replicaCount: 1
 
 worker:
   image:
     repository: abhikgho/text_to_speech_web_app
-    tag: worker-v1.0.1
+    tag: worker-v1.0.3
   replicaCount: 1
 
 ingress:
   enabled: true
-  host: text-to-speech.example.com
+  host: voice.app.com
 
 service:
   type: ClusterIP
