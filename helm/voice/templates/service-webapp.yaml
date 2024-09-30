@@ -1,16 +1,20 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "voice-app.fullname" . }}-webapp 
+  name: voice-app-webapp 
   labels:
-    {{- include "voice-app.labels" . | nindent 4 }}
+    app: voice-app
+    app.kubernetes.io/instance: voice-app
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: voice-app
+    app.kubernetes.io/version: "1.0.1"
+    helm.sh/chart: voice-app-0.1.0
 spec:
-  type: {{ .Values.service.type }}
+  type: ClusterIP
   ports:
-    - port: {{ .Values.service.port }}
+    - port: 80
       targetPort: 5000
       protocol: TCP
       name: http
   selector:
-    {{- include "voice-app.selectorLabels" . | nindent 4 }}
-    app.kubernetes.io/component: webapp
+    app.kubernetes.io/component: webapp,app.kubernetes.io/instance: voice-app,app.kubernetes.io/name: voice-app
