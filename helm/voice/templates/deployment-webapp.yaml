@@ -1,18 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-webapp
+  name: {{ include "voice-app.fullname" . }}-webapp
   labels:
-    app: {{ .Release.Name }}-webapp
+    {{- include "voice-app.labels" . | nindent 4 }}
+    app.kubernetes.io/component: webapp
 spec:
   replicas: {{ .Values.webapp.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Release.Name }}-webapp
+      {{- include "voice-app.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: webapp
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}-webapp
+        {{- include "voice-app.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: webapp
     spec:
       containers:
       - name: webapp
@@ -20,5 +23,7 @@ spec:
         ports:
         - containerPort: 5000
         env:
-        - name: REDIS_URL
-          value: {{ .Values.configMap.REDIS_URL }}
+        - name: REDIS_HOST
+          value: {{ .Values.configMap.REDIS_HOST }}
+        - name: REDIS_PORT
+          value: {{ .Values.configMap.REDIS_PORT | quote }}

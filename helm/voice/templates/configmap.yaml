@@ -1,6 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Release.Name }}-configmap
+  name: {{ include "voice-app.fullname" . }}-configmap
+  labels:
+    {{- include "voice-app.labels" . | nindent 4 }}
 data:
-  REDIS_URL: {{ .Values.configMap.REDIS_URL }}
+  REDIS_HOST: {{ .Values.configMap.REDIS_HOST }}
+  REDIS_PORT: {{ .Values.configMap.REDIS_PORT | quote }}

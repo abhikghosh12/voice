@@ -1,11 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Release.Name }}-webapp
+  name: {{ include "voice-app.fullname" . }}-webapp
+  labels:
+    {{- include "voice-app.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
       targetPort: 5000
+      protocol: TCP
+      name: http
   selector:
-    app: {{ .Release.Name }}-webapp
+    {{- include "voice-app.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/component: webapp

@@ -2,6 +2,22 @@
 
 This Helm chart deploys the Voice app on a Kubernetes cluster.
 
+```
+voice-app/
+├── Chart.yaml
+├── values.yaml
+├── charts/
+│   └── redis-17.8.4.tgz
+├── templates/
+│   ├── _helpers.tpl
+│   ├── configmap.yaml
+│   ├── deployment-webapp.yaml
+│   ├── deployment-worker.yaml
+│   ├── ingress.yaml
+│   └── service-webapp.yaml
+└── .helmignore
+```
+
 ## Prerequisites
 
 - Kubernetes 1.12+

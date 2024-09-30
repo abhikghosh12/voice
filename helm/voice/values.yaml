@@ -19,9 +19,11 @@ service:
   port: 80
 
 redis:
+  enabled: true
   master:
     persistence:
       enabled: false
 
 configMap:
-  REDIS_URL: "redis://{{ .Release.Name }}-redis-master:6379"
+  REDIS_HOST: "{{ .Release.Name }}-redis-master"
+  REDIS_PORT: "6379"

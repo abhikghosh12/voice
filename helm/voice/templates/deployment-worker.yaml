@@ -1,22 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-worker
+  name: {{ include "voice-app.fullname" . }}-worker
   labels:
-    app: {{ .Release.Name }}-worker
+    {{- include "voice-app.labels" . | nindent 4 }}
+    app.kubernetes.io/component: worker
 spec:
   replicas: {{ .Values.worker.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Release.Name }}-worker
+      {{- include "voice-app.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: worker
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}-worker
+        {{- include "voice-app.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: worker
     spec:
       containers:
       - name: worker
         image: "{{ .Values.worker.image.repository }}:{{ .Values.worker.image.tag }}"
         env:
-        - name: REDIS_URL
-          value: {{ .Values.configMap.REDIS_URL }}
+        - name: REDIS_HOST
+          value: {{ .Values.configMap.REDIS_HOST }}
+        - name: REDIS_PORT
+          value: {{ .Values.configMap.REDIS_PORT | quote }}
