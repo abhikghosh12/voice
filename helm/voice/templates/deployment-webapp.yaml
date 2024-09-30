@@ -24,7 +24,7 @@ spec:
         ports: 
           - containerPort: 5000
         env:
-        - name: REDIS_HOST
-          value: {{ .Values.configMap.REDIS_HOST }}
-        - name: REDIS_PORT
-          value: {{ .Values.configMap.REDIS_PORT | quote }}
+          - name: REDIS_HOST
+            value: {{ .Values.configMap.REDIS_HOST }}
+          - name: REDIS_PORT
+            value: {{ .Values.configMap.REDIS_PORT | quote }}
