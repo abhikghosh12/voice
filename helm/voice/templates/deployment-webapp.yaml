@@ -20,8 +20,9 @@ spec:
       containers:
       - name: webapp
         image: "{{ .Values.webapp.image.repository }}:{{ .Values.webapp.image.tag }}"
-        ports:
-        - containerPort: 5000
+        # Corrected indentation for 'ports'
+        ports: 
+          - containerPort: 5000
         env:
         - name: REDIS_HOST
           value: {{ .Values.configMap.REDIS_HOST }}
