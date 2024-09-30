@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "voice-app.fullname" . }}-webapp
+  name: {{ include "voice-app.fullname" . }}-webapp # Remove any trailing spaces here
   labels:
     {{- include "voice-app.labels" . | nindent 4 }}
     app.kubernetes.io/component: webapp
@@ -10,21 +10,20 @@ spec:
   selector:
     matchLabels:
       {{- include "voice-app.selectorLabels" . | nindent 6 }}
-      app.kubernetes.io/component: webapp
+      app.kubernetes.io/component: webapp  # Use a comma here to separate key-value pairs
   template:
     metadata:
       labels:
         {{- include "voice-app.selectorLabels" . | nindent 8 }}
-        app.kubernetes.io/component: webapp
+        app.kubernetes.io/component: worker  # Use a comma here as well
     spec:
       containers:
-      - name: webapp
-        image: "{{ .Values.webapp.image.repository }}:{{ .Values.webapp.image.tag }}"
-        # Corrected indentation for 'ports'
-        ports: 
-          - containerPort: 5000
-        env:
-          - name: REDIS_HOST
-            value: {{ .Values.configMap.REDIS_HOST }}
-          - name: REDIS_PORT
-            value: {{ .Values.configMap.REDIS_PORT | quote }}
+        - name: webapp
+          image: "{{ .Values.webapp.image.repository }}:{{ .Values.webapp.image.tag }}"
+          ports:
+            - containerPort: 5000
+          env:
+            - name: REDIS_HOST                # Ensure proper indentation and hyphens for each env variable
+              value: {{ .Values.configMap.REDIS_HOST }}
+            - name: REDIS_PORT
+              value: {{ .Values.configMap.REDIS_PORT | quote }}
