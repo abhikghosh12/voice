@@ -17,4 +17,6 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app.kubernetes.io/component: webapp,app.kubernetes.io/instance: voice-app,app.kubernetes.io/name: voice-app
+    app.kubernetes.io/component: webapp
+    app.kubernetes.io/instance: voice-app
+    app.kubernetes.io/name: voice-app

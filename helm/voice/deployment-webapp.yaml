@@ -14,11 +14,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/component: webapp,app.kubernetes.io/instance: voice-app,app.kubernetes.io/name: voice-app
+      app.kubernetes.io/component: webapp
+      app.kubernetes.io/instance: voice-app
+      app.kubernetes.io/name: voice-app
   template:
     metadata:
       labels:
-        app.kubernetes.io/component: webapp,app.kubernetes.io/instance: voice-app,app.kubernetes.io/name: voice-app
+        app.kubernetes.io/component: worker
+        app.kubernetes.io/instance: voice-app
+        app.kubernetes.io/name: voice-app
     spec:
       containers:
         - name: webapp
