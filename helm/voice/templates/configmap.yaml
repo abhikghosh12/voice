@@ -5,5 +5,5 @@ metadata:
   labels:
     {{- include "voice-app.labels" . | nindent 4 }}
 data:
-  REDIS_HOST: {{ .Values.configMap.REDIS_HOST | default "localhost" }} 
+  REDIS_HOST: {{ .Values.configMap.REDIS_HOST | default "localhost" }}
   REDIS_PORT: {{ .Values.configMap.REDIS_PORT | quote | default "6379" }}
