@@ -1,7 +1,7 @@
 webapp:
   image:
     repository: abhikgho/text_to_speech_web_app
-    tag: webapp-v1.0.3
+    tag: web-v1.0.3
   replicaCount: 1
 
 worker:
@@ -16,14 +16,20 @@ ingress:
 
 service:
   type: ClusterIP
-  port: 80
+  port: 5000
 
 redis:
   enabled: true
   master:
     persistence:
       enabled: false
+  auth:
+    enabled: false  # Disable Redis authentication
 
-configMap:
-  REDIS_HOST: "{{ .Release.Name }}-redis-master"
-  REDIS_PORT: "6379"
+persistence:
+  uploads:
+    enabled: true
+    size: 1Gi
+  output:
+    enabled: true
+    size: 1Gi

@@ -3,7 +3,7 @@
 This Helm chart deploys the Voice app on a Kubernetes cluster.
 
 ```
-voice-app/
+voice/
 ├── Chart.yaml
 ├── values.yaml
 ├── charts/
@@ -31,8 +31,8 @@ To install the chart with the release name `voice-app`:
 ```bash
 helm repo add stable https://charts.helm.sh/stable
 helm repo update
-helm dependency update ./voice-app
-helm install voice-app ./voice-app
+helm dependency update ./voice
+helm install voice-app ./voice
 ```
 
 These commands add the stable Helm repository, update the repository cache, update the chart dependencies, and install the Voice app Helm chart.
@@ -55,7 +55,7 @@ The following table lists the configurable parameters of the Voice app chart and
 |--------------------------|-------------------------|----------------|
 | `replicaCount`           | Number of replicas      | `1`            |
 | `image.repository`       | Image repository        | `abhikgho/text_to_speech_web_app` |
-| `image.tag`              | Image tag               | `web-v1.0.1`   |
+| `image.tag`              | Image tag               | `web-v1.0.3`   |
 | `image.pullPolicy`       | Image pull policy       | `IfNotPresent` |
 | `service.type`           | Kubernetes Service type | `ClusterIP`    |
 | `service.port`           | Service port            | `5000`         |
@@ -65,13 +65,13 @@ The following table lists the configurable parameters of the Voice app chart and
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example:
 
 ```bash
-helm install voice-app ./voice-app --set replicaCount=2
+helm install voice-app ./voice --set replicaCount=2
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example:
 
 ```bash
-helm install voice-app ./voice-app -f values.yaml
+helm install voice-app ./voice -f ./voice/values.yaml
 ```
 
 ## Persistence
