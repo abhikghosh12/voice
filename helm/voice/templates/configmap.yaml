@@ -1,9 +1,9 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: {{ include "voice-app.fullname" . }}-configmap
-  labels:
-    {{- include "voice-app.labels" . | nindent 4 }}
-data:
-  REDIS_HOST: {{ .Values.configMap.REDIS_HOST | default "localhost" }}
-  REDIS_PORT: {{ .Values.configMap.REDIS_PORT | quote | default "6379" }}
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: {{ include "voice-app.fullname" . }}-configmap
+#   labels:
+#     {{- include "voice-app.labels" . | nindent 4 }}
+# data:
+#   REDIS_HOST: {{ .Values.configMap.REDIS_HOST | default "localhost" }}
+#   REDIS_PORT: {{ .Values.configMap.REDIS_PORT | quote | default "6379" }}
