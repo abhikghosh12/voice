@@ -55,8 +55,45 @@ if ! command_exists docker-compose; then
     sudo chmod +x /usr/local/bin/docker-compose
 fi
 
+# Display instructions
+echo "=========================================="
+echo "          Voice App Instructions          "
+echo "=========================================="
+echo "To start the server:"
+echo "  ./run-voice-app.sh"
+echo ""
+echo "To stop the server:"
+echo "  docker-compose -f docker-compose.prod.yml down"
+echo ""
+echo "To access the application:"
+echo "  http://localhost:5000"
+echo "=========================================="
+echo ""
+
+# Prompt user to continue
+read -p "Press Enter to start the Voice app, or Ctrl+C to exit..."
+
 # Run the Voice app using Docker Compose
 echo "Starting the Voice app..."
 docker-compose -f docker-compose.prod.yml up -d
 
-echo "Voice app is now running. Access it at http://localhost:5000"
+# Function to open browser based on OS
+open_browser() {
+    case "$(uname -s)" in
+        Darwin*)  open "http://localhost:5000" ;;
+        Linux*)   xdg-open "http://localhost:5000" ;;
+        MINGW*|CYGWIN*)  start "http://localhost:5000" ;;
+    esac
+}
+
+# Attempt to open browser
+if command_exists open || command_exists xdg-open || command_exists start; then
+    echo "Attempting to open browser..."
+    open_browser
+else
+    echo "Could not automatically open browser. Please navigate to http://localhost:5000 in your web browser."
+fi
+
+echo ""
+echo "Voice app is now running."
+echo "To stop the server, use: docker-compose -f docker-compose.prod.yml down"
