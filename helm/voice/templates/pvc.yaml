@@ -9,6 +9,7 @@ spec:
   resources:
     requests:
       storage: {{ .Values.persistence.uploads.size }}
+      storageClassName: {{ .Values.persistence.uploads.storageClassName }}      
 {{- end }}
 
 ---
@@ -24,4 +25,5 @@ spec:
   resources:
     requests:
       storage: {{ .Values.persistence.output.size }}
+      storageClassName: {{ .Values.persistence.output.storageClassName }}
 {{- end }}
