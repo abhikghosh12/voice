@@ -90,6 +90,14 @@ To upgrade the Voice app deployment:
 helm upgrade voice-app ./voice-app
 ```
 
+To forward a service port using kubectl, you can use the kubectl port-forward command. It creates a connection from your local port 8080 to port 80 of the voice-app-webapp service.
+The -n voice-app specifies the namespace where the service is located.
+
+```bash
+kubectl port-forward -n voice-app service/voice-app-webapp 3000:80
+```
+After running this command, you should be able to access the service by opening a web browser and navigating to http://localhost:3000.
+
 ## Troubleshooting
 
 If you encounter issues with the Helm chart deployment:
