@@ -118,10 +118,43 @@ For more detailed information about the Helm chart, please refer to the [Helm Ch
   ```
 - For Helm deployment issues, check the Kubernetes pod logs and events.
 
-## Contributing
+## Support and Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+### Support the Project
+If you find this project helpful, consider supporting its development:
+
+[![Support via PayPal](https://img.shields.io/badge/Support%20via-PayPal-blue.svg)](https://paypal.me/abhikghosh87)
+
+Every contribution helps maintain and improve the service! Your support enables:
+- 🚀 Regular updates and improvements
+- 📚 Better documentation
+- 🛠️ New features development
+- 🐛 Faster bug fixes
+- 💬 Responsive support
+
+### Connect & Contribute
+
+- 🌟 Star this repository if you find it helpful
+- 🔗 Follow on [LinkedIn](https://www.linkedin.com/in/abhik-ghosh-msc/) for updates
+- 💬 Join our [My website](https://abhikghosh87.wixsite.com/website)
+- 📝 Check out my [Blog Posts](https://medium.com/@abhikghosh_46536)
+
+### Support the Project
+
+If you find this project helpful, consider supporting its development:
+
+- 💖 PayPal: [paypal.me/abhikghosh87](https://paypal.me/abhikghosh87)
+- ⭐ Star this repository
+- 📣 Share with others
+
+### Technical Support
+For technical questions and issues:
+- Open an issue in the repository
+- Contact the cloud infrastructure team
 
 ## License
 
-This project is licensed under the MIT License.
+MIT License - see the [LICENSE](LICENSE) file for details
+
+---
+Made with ❤️ by the community. Special thanks to all our supporters!
