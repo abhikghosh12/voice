@@ -22,21 +22,25 @@ redis:
   enabled: true
   master:
     persistence:
-      enabled: true                # Enable persistence
-      size: 1Gi                    # Size of the volume
-      storageClassName: ""         # Specify your storage class here      
+      enabled: true
+      size: 5Gi
+      storageClass: standard
   auth:
-    enabled: false                # Disable Redis authentication
+    enabled: false
   replica:
-    kind: StatefulSet             # Use StatefulSet for Redis replicas
+    persistence:
+      enabled: true
+      storageClass: standard
     replicaCount: 2
 
 persistence:
   uploads:
     enabled: true
-    size: 1Gi
-    storageClassName: ""
+    size: 5Gi
+    storageClass: standard
+    accessMode: ReadWriteOnce
   output:
     enabled: true
-    size: 1Gi
-    storageClassName: "" 
+    size: 5Gi
+    storageClass: standard
+    accessMode: ReadWriteOnce

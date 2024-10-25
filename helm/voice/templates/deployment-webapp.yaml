@@ -39,7 +39,7 @@ spec:
       volumes:
         - name: uploads
           persistentVolumeClaim:
-            claimName: {{ .Release.Name }}-uploads
+            claimName: {{ .Release.Name }}-voice-app-uploads
         - name: output
           persistentVolumeClaim:
-            claimName: {{ .Release.Name }}-output
+            claimName: {{ .Release.Name }}-voice-app-output
